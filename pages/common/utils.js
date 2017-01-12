@@ -1,4 +1,4 @@
-import { Promise } from '../../resources/js/bluebird';
+import { Promise } from '../../resources/js/es6-promise.min.js';
 
 export function proxyImage(src) {
   return `http://doubandev2.intra.douban.com:20110/picture/?src=${encodeURIComponent(src)}`

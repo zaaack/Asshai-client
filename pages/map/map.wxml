@@ -1,4 +1,8 @@
+
+<!--
 <map longitude="{{longitude}}" latitude="{{latitude}}" markers="{{markers}}" scale="{{scale}}" id="map"></map>
+
+-->
 
 <view class="search-view">
     <input type="text" placeholder="搜索周边地区" class="search-input" placeholder-class="search-pl" bindinput="inputComfirm" />
