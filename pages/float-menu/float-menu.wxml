@@ -10,8 +10,9 @@
         class="float-sub-item-image"
         src="{{item.url}}"
         style="width: 100%; height: 100%;"
-        bindtap="handleFloatItemTap"
         data-index="{{index}}"
+        bindtap="handleFloatItemTap"
+        id="{{'float-sub-item-' + index}}"
       />
     </view>
     <view
@@ -23,8 +24,9 @@
         class="float-main-item-image"
         src="{{floatMenu.mainItem.cur_url}}"
         style="width: 100%; height: 100%;transform: rotate({{floatMenu.mainItem.rotate}}deg);"
-        bindtap="handleFloatItemTap"
         data-index="-1"
+        id="{{'float-main-item'}}"
+        bindtap="handleFloatItemTap"
       />
     </view>
   </view>

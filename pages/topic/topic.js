@@ -21,8 +21,8 @@ Page({
       this.loadTopic(sysInfo))
     this.loadComments()
     this.getFavList(list => {
-      const faved = list.filter(
-        t => t.douban_id + '' !== this.topicId + '')
+      const faved = !!list.filter(
+        t => t.douban_id + '' === this.topicId + '').length
       initFloatMenu({
         context: this ,
         subItems: [
@@ -35,8 +35,14 @@ Page({
   getFavList(cb) {
     wx.getStorage({
       key: FAV_LIST,
-      success: (res) => cb(res.data || []),
-      fail: (res) => cb([]),
+      success: (res) => {
+        console.log('getStorage success:', res)
+        cb(res.data || [])
+      },
+      fail: (res) => {
+        console.log('getStorage fail:', res)
+        cb([])
+      },
     })
   },
   favTopic() {
@@ -85,9 +91,6 @@ Page({
         console.log(res.data)
         const data = res.data
         data.create_time = formatDate(data.create_time)
-        this.setData({
-          topic: data
-        })
         const imgMaxWidth = sysInfo.windowWidth - 18 * 2
         const IMG_RE = /<图片(\d+)>/g
         let elements = []
@@ -118,7 +121,8 @@ Page({
         })
         this.setData({
           contentElements: elements,
-          images
+          images,
+          topic: data,
         })
       },
       fail: data => {

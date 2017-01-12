@@ -1,6 +1,10 @@
 
 
 export function handleFloatItemTap(e, context) {
+  console.log(e)
+  if (e.target.id !== e.currentTarget.id) {
+    return
+  }
   const index = e.target.dataset.index
   context = context || this
   const floatMenuData = context.data.floatMenu
@@ -46,6 +50,7 @@ export function initFloatMenu({
     let mainItemCloseUrl = mainItem.closeUrl
     floatMenu.mainItem.rotate = 0
     mainItem.handleTap = e => {
+      let { floatMenu } = context.data
       floatMenu.showSubItems = !floatMenu.showSubItems
       floatMenu.mainItem.rotate += 180
       context.setData({ floatMenu })
